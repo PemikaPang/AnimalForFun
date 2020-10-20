@@ -27,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Integer> qID = new ArrayList<Integer>();//สุ่มโจทย์
     MediaPlayer mediaPlayer;
     Integer score=0;
+    String nameString;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,9 +219,12 @@ public class GameActivity extends AppCompatActivity {
     }//end choiceAns Method
 
     private void dialogboxScore() { //method แสดงคะแนนน
+        //รับค้า nameString จากหน้า MainActivity
+        nameString = getIntent().getStringExtra("Name");
+        //dialogbox สรุปคะแนน
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("สรุปคะแนน");
-        builder.setMessage("คุณได้ " + score + " คะแนน")
+        builder.setMessage("คุณ "+nameString+" ได้ " + score + " คะแนน")
                 .setCancelable(false)
                 .setPositiveButton("เล่นอีกครั้ง", new DialogInterface.OnClickListener() {
                     @Override
